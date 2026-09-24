@@ -9,6 +9,7 @@
 #include <hal/hal.h>
 #include "app_template/app_template.h"
 #include "app_launcher/app_launcher.h"
+#include "sc_device/sc_device.h"
 #include "app_startup_anim/app_startup_anim.h"
 /* Header files locator (Don't remove) */
 
@@ -36,6 +37,6 @@ inline void on_install_apps()
 {
     // 安装 App
     // mooncake::GetMooncake().installApp(std::make_unique<AppTemplate>());
-    mooncake::GetMooncake().installApp(std::make_unique<AppLauncher>());
+    mooncake::GetMooncake().installApp(std::make_unique<SCDevice>());
     /* Install app locator (Don't remove) */
 }
