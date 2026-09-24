@@ -4,10 +4,10 @@
 
 #include <mooncake_log.h>
 #include <smooth_ui_toolkit.h>
-#include <smooth_lvgl.h>
+#include <smooth_lvgl.h>\n#include "apps/utils/audio/audio.h"
 
 using namespace smooth_ui_toolkit;
-using namespace smooth_ui_toolkit::lvgl_cpp;
+using namespace smooth_ui_toolkit::lvgl_cpp;\n\nextern const uint8_t sc_horse_png_start[] asm("_binary_special_chess_horse_png_start");\nextern const uint8_t sc_horse_png_end[] asm("_binary_special_chess_horse_png_end");
 
 namespace {
 
@@ -205,7 +205,7 @@ void SCDevice::onOpen()
     _status = makeText(screen, "Selecciona un modo", MUTED, &lv_font_montserrat_18);
     lv_obj_align(_status, LV_ALIGN_BOTTOM_LEFT, 58, -34);
 
-    _version = makeText(screen, "SC DEVICE  V0.3  PREVIEW", MUTED_2, &lv_font_montserrat_14);
+    _version = makeText(screen, "SC DEVICE  V0.4  PREVIEW", MUTED_2, &lv_font_montserrat_14);
     lv_obj_align(_version, LV_ALIGN_BOTTOM_RIGHT, -58, -36);
 }
 
@@ -213,7 +213,7 @@ void SCDevice::onTimerClicked(lv_event_t* e)
 {
     auto* self = static_cast<SCDevice*>(lv_event_get_user_data(e));
     if (self && self->_status) {
-        lv_label_set_text(self->_status, "SC TIMER seleccionado");
+        lv_label_set_text(self->_status, "SC TIMER seleccionado");\n        audio::play_chord({76, 83}, 0.055);
         lv_obj_set_style_border_color(self->_timer_btn, lv_color_hex(GOLD), LV_PART_MAIN);
         lv_obj_set_style_border_width(self->_timer_btn, 3, LV_PART_MAIN);
         lv_obj_set_style_border_color(self->_match_btn, lv_color_hex(0x355777), LV_PART_MAIN);
@@ -225,7 +225,7 @@ void SCDevice::onMatchClicked(lv_event_t* e)
 {
     auto* self = static_cast<SCDevice*>(lv_event_get_user_data(e));
     if (self && self->_status) {
-        lv_label_set_text(self->_status, "SC MATCH SYSTEM seleccionado");
+        lv_label_set_text(self->_status, "SC MATCH SYSTEM seleccionado");\n        audio::play_chord({71, 78}, 0.065);
         lv_obj_set_style_border_color(self->_match_btn, lv_color_hex(BLUE), LV_PART_MAIN);
         lv_obj_set_style_border_width(self->_match_btn, 3, LV_PART_MAIN);
         lv_obj_set_style_border_color(self->_timer_btn, lv_color_hex(0x5C5131), LV_PART_MAIN);
