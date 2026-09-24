@@ -1,5 +1,7 @@
 #include "sc_device.h"
 
+#include <hal/hal.h>
+
 #include <mooncake_log.h>
 #include <smooth_ui_toolkit.h>
 #include <smooth_lvgl.h>
