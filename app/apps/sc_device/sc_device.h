@@ -1,10 +1,7 @@
 #pragma once
 
 #include <mooncake.h>
-#include <memory>
-#include "lvgl_cpp/label.h"
-#include <smooth_ui_toolkit.h>
-#include <smooth_lvgl.h>
+#include <lvgl.h>
 
 class SCDevice : public mooncake::AppAbility {
 public:
@@ -16,7 +13,13 @@ public:
     void onClose() override;
 
 private:
-    std::unique_ptr<smooth_ui_toolkit::lvgl_cpp::Label> _title;
-    std::unique_ptr<smooth_ui_toolkit::lvgl_cpp::Label> _subtitle;
-    std::unique_ptr<smooth_ui_toolkit::lvgl_cpp::Label> _version;
+    lv_obj_t* _title = nullptr;
+    lv_obj_t* _subtitle = nullptr;
+    lv_obj_t* _timer_btn = nullptr;
+    lv_obj_t* _match_btn = nullptr;
+    lv_obj_t* _status = nullptr;
+    lv_obj_t* _version = nullptr;
+
+    static void onTimerClicked(lv_event_t* e);
+    static void onMatchClicked(lv_event_t* e);
 };
