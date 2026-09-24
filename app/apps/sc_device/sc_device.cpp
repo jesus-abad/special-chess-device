@@ -4,10 +4,14 @@
 
 #include <mooncake_log.h>
 #include <smooth_ui_toolkit.h>
-#include <smooth_lvgl.h>\n#include "apps/utils/audio/audio.h"
+#include <smooth_lvgl.h>
+#include "apps/utils/audio/audio.h"
 
 using namespace smooth_ui_toolkit;
-using namespace smooth_ui_toolkit::lvgl_cpp;\n\nextern const uint8_t sc_horse_png_start[] asm("_binary_special_chess_horse_png_start");\nextern const uint8_t sc_horse_png_end[] asm("_binary_special_chess_horse_png_end");
+using namespace smooth_ui_toolkit::lvgl_cpp;
+
+extern const uint8_t sc_horse_png_start[] asm("_binary_special_chess_horse_png_start");
+extern const uint8_t sc_horse_png_end[] asm("_binary_special_chess_horse_png_end");
 
 namespace {
 
@@ -213,7 +217,8 @@ void SCDevice::onTimerClicked(lv_event_t* e)
 {
     auto* self = static_cast<SCDevice*>(lv_event_get_user_data(e));
     if (self && self->_status) {
-        lv_label_set_text(self->_status, "SC TIMER seleccionado");\n        audio::play_chord({76, 83}, 0.055);
+        lv_label_set_text(self->_status, "SC TIMER seleccionado");
+        audio::play_chord({76, 83}, 0.055);
         lv_obj_set_style_border_color(self->_timer_btn, lv_color_hex(GOLD), LV_PART_MAIN);
         lv_obj_set_style_border_width(self->_timer_btn, 3, LV_PART_MAIN);
         lv_obj_set_style_border_color(self->_match_btn, lv_color_hex(0x355777), LV_PART_MAIN);
@@ -225,7 +230,8 @@ void SCDevice::onMatchClicked(lv_event_t* e)
 {
     auto* self = static_cast<SCDevice*>(lv_event_get_user_data(e));
     if (self && self->_status) {
-        lv_label_set_text(self->_status, "SC MATCH SYSTEM seleccionado");\n        audio::play_chord({71, 78}, 0.065);
+        lv_label_set_text(self->_status, "SC MATCH SYSTEM seleccionado");
+        audio::play_chord({71, 78}, 0.065);
         lv_obj_set_style_border_color(self->_match_btn, lv_color_hex(BLUE), LV_PART_MAIN);
         lv_obj_set_style_border_width(self->_match_btn, 3, LV_PART_MAIN);
         lv_obj_set_style_border_color(self->_timer_btn, lv_color_hex(0x5C5131), LV_PART_MAIN);
